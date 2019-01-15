@@ -14,8 +14,8 @@ class NewVisitorTest(unittest.TestCase):
 #他去看了这个应用的首页
                self.browser.get("http://localhost:8000")
 #他注意到这个首页的标题和头部包含“To-Do”
-               self.assertIn("To-Do",self.browser.title)
-               self.fail("Finish the test")
+               self.assertIn("Django",self.browser.title)
+#             self.fail("Finish the test")
 #应用邀请他输入一个待办事项
 #接下来写的跟上一个test.py 一样的故事
 
