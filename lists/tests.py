@@ -1,8 +1,11 @@
-﻿from django.urls import resolve
+﻿from django.template.loader import render_to_string
+from django.urls import resolve
 from django.test import TestCase
 from  lists.views import  home_page
-from  django.http import HttpResponse
-class Test(TestCase):
+from  django.http import  HttpRequest
+
+
+class HomePageTest(TestCase):
 #这个方法是检查“/” 能否映射到 home_page 函数
     def test_url_resolve_to_home_page_view(self):
         found = resolve("/")
@@ -11,10 +14,11 @@ class Test(TestCase):
 
 #视图函数的测试
     def test_home_page_returns_correct_html(self):
-        request = HttpResponse()
+        request = HttpRequest()
         response = home_page(request)
         html = response.content.decode('utf-8')
-        self.assertTrue(html.startswith('<html>'))
-        self.assertIn("<title>To-Do</title>",html)
+        self.assertTrue(html.strip().startswith('<html>'))
+        self.assertIn("<title>To-Do list</title>",html)
         self.assertTrue(html.endswith('</html>'))
+
 
