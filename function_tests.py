@@ -36,7 +36,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows  = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text=="1:Buy woolen yarn"for row in rows)
+            any(row.text=="1:Buy woolen yarn"for row in rows),
+                "new to do item did not apper in table"
         )
 #页面中又显示了一个文本框，可以输入其他待办事项
 #她输入了"Knit a sweater with wool”(使用毛线织毛衣)
