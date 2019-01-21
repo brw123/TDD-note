@@ -40,7 +40,7 @@ class NewVisitorTest(unittest.TestCase):
 # 待办事项中显示“1：Buy woolen yarn”
         self.check_for_row_in_list_table( "1:Buy woolen yarn")
 #页面中又显示了一个文本框，可以输入其他待办事项
-#她输入了"Knit a sweater with wool”(使用毛线织毛衣)
+#她输入了"Knit a sweater with wool”(使用毛线织m毛衣)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys("Knit a sweater with wool")
         inputbox.send_keys(Keys.ENTER)
