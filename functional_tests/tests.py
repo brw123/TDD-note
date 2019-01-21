@@ -1,10 +1,10 @@
 ﻿#coding=utf-8
 
 from selenium import webdriver
-import unittest
+from django.test import LiveServerTestCase
 from selenium.webdriver.common.keys import Keys
 import time
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def  setUp(self):
         self.browser = webdriver.Firefox()
@@ -19,7 +19,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
 #小花听说有一个待办事项的网站很好
 #她去看了这个应用的首页
-        self.browser.get("http://localhost:8000")
+        self.browser.get(self.live_server_url)
 #她注意到这个首页的标题和头部包含“To-Do”
         self.assertIn("To-Do",self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
@@ -49,9 +49,7 @@ class NewVisitorTest(unittest.TestCase):
 # 待办事项中显示  1：Buy woolen yarn
 #                 2:Knit a sweater with wool
         self.check_for_row_in_list_table( "1:Buy woolen yarn")
-        self.check_for_row_in_list_table( "2:Buy woolen yarn")
+        self.check_for_row_in_list_table( "2:Knit a sweater with wool")
         self.fail("Finish the test")
 
 #[..]
-if __name__=='__main__':
-      unittest.main()
